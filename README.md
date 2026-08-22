@@ -1,3 +1,3 @@
 # mini4wd
 
-[ストッククラス レギュレーション](/doc/regulation_stockclass_20260511.md)
+[ストッククラス レギュレーション](?page=doc/regulation_stockclass_20260511.md)
