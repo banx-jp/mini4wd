@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini 4WD Site</title>
+  <title>Mini 4wd site</title>
 
   <!-- 提示されたCSSを読み込み -->
   <link rel="stylesheet" href="style.css">
@@ -13,15 +13,24 @@
 </head>
 <body>
 
+  <!-- トップへ戻るリンクなどのナビゲーション（任意） -->
+  <div style="margin-bottom: 20px;">
+    <a href="?page=README.md">トップページへ</a>
+  </div>
+
   <!-- Markdownの内容がここに描画されます -->
   <main id="content"></main>
 
   <script>
-    // README.md（または表示したい.mdファイル）を読み込んで表示する
-    fetch('README.md')
+    // URLの ?page= の値を取得する（指定がない場合は README.md を初期値にする）
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetFile = urlParams.get('page') || 'README.md';
+
+    // 指定されたMarkdownファイルを読み込んで表示
+    fetch(targetFile)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Markdownファイルが見つかりませんでした');
+          throw new Error('指定されたファイルが見つかりませんでした (' + targetFile + ')');
         }
         return response.text();
       })
