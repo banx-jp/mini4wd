@@ -1,1 +1,37 @@
-My Cyber Purple Site
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cyber Purple Site</title>
+
+  <!-- 提示されたCSSを読み込み -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- MarkdownをHTMLに変換するライブラリ (marked.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <!-- Markdownの内容がここに描画されます -->
+  <main id="content"></main>
+
+  <script>
+    // README.md（または表示したい.mdファイル）を読み込んで表示する
+    fetch('README.md')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Markdownファイルが見つかりませんでした');
+        }
+        return response.text();
+      })
+      .then(markdown => {
+        document.getElementById('content').innerHTML = marked.parse(markdown);
+      })
+      .catch(error => {
+        document.getElementById('content').innerHTML = '<p style="color:red;">エラー: ' + error.message + '</p>';
+      });
+  </script>
+
+</body>
+</html>
