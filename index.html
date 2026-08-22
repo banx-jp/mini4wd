@@ -13,33 +13,41 @@
 </head>
 <body>
 
-  <!-- トップへ戻るリンクなどのナビゲーション（任意） -->
+  <!-- トップへ戻るボタン -->
   <div style="margin-bottom: 20px;">
-    <a href="?page=README.md">トップページへ</a>
+    <a href="#">← トップページへ</a>
   </div>
 
   <!-- Markdownの内容がここに描画されます -->
   <main id="content"></main>
 
   <script>
-    // URLの ?page= の値を取得する（指定がない場合は README.md を初期値にする）
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetFile = urlParams.get('page') || 'README.md';
+    function loadPage() {
+      // URLの # の後ろを取得（指定がなければ README.md）
+      let file = location.hash.replace(/^#/, '');
+      if (!file) file = 'README.md';
 
-    // 指定されたMarkdownファイルを読み込んで表示
-    fetch(targetFile)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('指定されたファイルが見つかりませんでした (' + targetFile + ')');
-        }
-        return response.text();
-      })
-      .then(markdown => {
-        document.getElementById('content').innerHTML = marked.parse(markdown);
-      })
-      .catch(error => {
-        document.getElementById('content').innerHTML = '<p style="color:red;">エラー: ' + error.message + '</p>';
-      });
+      // キャッシュを回避して最新のMarkdownを取得
+      fetch(file + '?t=' + new Date().getTime())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('ファイルが見つかりませんでした: ' + file);
+          }
+          return response.text();
+        })
+        .then(markdown => {
+          document.getElementById('content').innerHTML = marked.parse(markdown);
+          window.scrollTo(0, 0); // ページの先頭にスクロール
+        })
+        .catch(error => {
+          document.getElementById('content').innerHTML = 
+            '<p style="color:#f472b6;">エラー: ' + error.message + '</p>';
+        });
+    }
+
+    // 初回読み込み時およびURLの # が変わった時に実行
+    loadPage();
+    window.addEventListener('hashchange', loadPage);
   </script>
 
 </body>
