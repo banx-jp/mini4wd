@@ -1,0 +1,22 @@
+---
+---
+@import "{{ site.theme }}";
+
+/* ここに独自のCSSを記述します */
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #2b6cb0;
+  border-bottom: 2px solid #2b6cb0;
+  padding-bottom: 8px;
+}
+
+.custom-card {
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
