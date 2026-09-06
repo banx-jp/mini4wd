@@ -1,5 +1,9 @@
 # mini4wd
 
+## Class
+- [STOCK CLASS](#doc/class_stock.md)
+- [OPEN CLASS](#doc/class_open.md)
+
 ## Document
 - [ショップ情報](#doc/shopinfo.md)
 - [購入情報](#doc/buyd.md)
