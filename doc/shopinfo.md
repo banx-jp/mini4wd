@@ -1,5 +1,6 @@
 # 通販
 - [DMM通販](https://www.dmm.com/mono/hobby/-/list/=/article=directory/id=4969/)
+- [スーパーラジコン](https://www.super-rc.co.jp/rc/category/?pcm_cd=01-05)
 
 # 実店舗情報
 ## ホビーショップタムタム アルパーク広島店
