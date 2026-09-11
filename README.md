@@ -1,5 +1,8 @@
 # mini4wd
 
+## 見つけたら買う
+- 15534 ローフリクション小径ローハイトタイヤ（26mm）＆カーボン強化ホイール（フィン）
+
 ## Class
 - [STOCK CLASS](#doc/class_stock.md)
 - [OPEN CLASS](#doc/class_open.md)
