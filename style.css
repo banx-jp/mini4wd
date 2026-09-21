@@ -183,6 +183,9 @@ tr:last-child td { border-bottom: none; }
     border-radius: 3px;
     font-size: 0.95em;         
     border: 1px solid #3b2d54;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
 }
 
 pre {
